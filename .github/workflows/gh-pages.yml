@@ -24,7 +24,7 @@ jobs:
       - name: NPM clean install
         run: npm ci
       - name: Build static
-        run: npm build
+        run: npm run build
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v4

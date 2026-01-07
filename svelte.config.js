@@ -9,6 +9,9 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'content-collections': './.content-collections/generated'
+		},
+		prerender: {
+			origin: 'https://gitoido-mc.github.io'
 		}
 	},
 	extensions: ['.svelte', '.svx']

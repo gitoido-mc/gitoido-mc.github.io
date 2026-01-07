@@ -1,14 +1,13 @@
 <script lang="ts">
-    import type {PageProps} from './$types';
-    import ListNote from "$lib/notes/ListNote.svelte";
+	import type { PageProps } from './$types';
+	import ListNote from '$lib/notes/ListNote.svelte';
+	import Seo from 'sk-seo';
 
-    let {data}: PageProps = $props();
+	let { data }: PageProps = $props();
 </script>
 
-<svelte:head>
-    <title>Notes - Gito's modding ponders</title>
-</svelte:head>
+<Seo />
 
 {#each data.notes as note (note.slug)}
-    <ListNote {...note}/>
+	<ListNote {...note} />
 {/each}

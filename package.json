@@ -30,6 +30,7 @@
 		"mdsvex": "^0.12.6",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.0",
+		"sk-seo": "^0.5.4",
 		"svelte": "^5.45.6",
 		"svelte-check": "^4.3.4",
 		"typescript": "^5.9.3",

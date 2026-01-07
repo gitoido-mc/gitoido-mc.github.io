@@ -1,6 +1,8 @@
-import contentCollections from "@content-collections/vite";
+import contentCollections from '@content-collections/vite';
 import devtoolsJson from 'vite-plugin-devtools-json';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
-export default defineConfig({ plugins: [sveltekit(), devtoolsJson(), contentCollections()] });
+export default defineConfig({
+	plugins: [sveltekit(), devtoolsJson(), contentCollections()]
+});

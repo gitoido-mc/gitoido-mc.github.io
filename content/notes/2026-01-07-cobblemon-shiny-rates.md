@@ -9,11 +9,12 @@ slug: cobblemon-shiny-rates
 date: 2026-01-07
 ---
 
+
 Sometimes you want to modify the ✨*shiny*✨ rate of the species you are working with.
 
 Use cases may vary. The typical scenario is when you are trying to give a player a species via methods other than natural spawning.
 
-The code in this note is **Kotlin**. Your experience with **Java** may vary. Don't be afraid to ask questions in the Cobblemon Discord's #programming channel.
+The code in this note is **Kotlin**. Your experience with **Java** may vary. Don't be afraid to ask questions in the Cobblemon Discord's `#programming` channel.
 
 Let's instantiate `ShinyChanceCalculationEvent`:
 
@@ -46,6 +47,9 @@ event.addModificationFunction(function: (Float, ServerPlayer?, Pokemon) -> Float
 ```
 
 These handy helpers are our bread and butter.
+
+
+
 For example, if I want to apply a flat bonus, I would do it this way:
 
 ```kotlin
@@ -77,6 +81,7 @@ event.addModificationFunction { chance, player, pokemon ->
 > [!hint] Kotlin specific
 > The `return@addModificationFunction` is *specific to Kotlin* because we can explicitly tell Kotlin which function we want to return from.
 
+
 Now that we are done modifying our chances, let's assemble it all together:
 
 ```kotlin
@@ -95,6 +100,9 @@ fun calculateShiny(player: ServerPlayer): Pokemon {
 
 You may notice something: I check for ✨shiny✨ in the `post` handler of the event.
 This is because there are other mods that can influence the shiny rate.
-Checking it at that particular place ensures your mod will properly pick up other chance influences.
+
+Checking it at that particular place ensures your mod will properly pick up other chance influences and in general is better for interop between different mods.
+
+You can also ponder upon usage in this [example](https://github.com/gitoido-mc/rad-gyms/blob/1.7.1%2F0.4.x-main/common/src/main/kotlin/lol/gito/radgyms/common/util/CobblemonExtensions.kt#L16)
 
 That is all. Happy modding!

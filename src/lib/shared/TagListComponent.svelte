@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Tag from "$lib/shared/Tag.svelte";
+    import TagComponent from "$lib/shared/TagComponent.svelte";
 
     interface Props {
         tags: string[]
@@ -21,6 +21,6 @@
 
 <span class="tags col-xs">
 {#each props.tags as tag (tag)}
-    <Tag {tag}/>
+    <TagComponent {tag}/>
 {/each}
 </span>

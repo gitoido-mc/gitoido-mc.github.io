@@ -39,7 +39,9 @@
 		"zod": "^4.3.5"
 	},
 	"dependencies": {
+		"@lucide/svelte": "^0.562.0",
 		"@picocss/pico": "^2.1.1",
+		"date-fns": "^4.1.0",
 		"flexboxgrid": "^6.3.1"
 	}
 }

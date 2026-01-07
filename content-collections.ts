@@ -7,13 +7,15 @@ import { z } from 'zod';
 
 const notes = defineCollection({
 	name: 'notes',
-	directory: 'content',
+	directory: 'content/notes',
 	include: '*.md',
 	schema: z.object({
 		title: z.string(),
-		slug: z.string(),
 		tags: z.array(z.string()),
-		date: z.string()
+		slug: z.string(),
+		date: z.coerce.date(),
+		excerpt: z.string(),
+		content: z.string()
 	}),
 	transform: async (document, context) => {
 		const html = await compileMarkdown(context, document);

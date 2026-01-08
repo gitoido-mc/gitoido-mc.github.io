@@ -80,7 +80,8 @@ event.addModificationFunction { chance, player, pokemon ->
 ```
 
 > [!hint] Kotlin specific
-> The absence of parentheses in function call is Kotlin syntactic sugar - in this case we only pass callable function as sole argument
+> The absence of parentheses in `addModificationFunction` function call is Kotlin syntactic sugar - in this case we only pass callable function as sole argument
+> 
 > The `return@addModificationFunction` is *specific to Kotlin* because we can explicitly tell Kotlin which function we want to return from.
 
 

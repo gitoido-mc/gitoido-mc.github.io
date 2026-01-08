@@ -7,12 +7,13 @@ tags:
 excerpt: How to work with ShinyChanceCalculationEvent in Cobblemon
 slug: cobblemon-shiny-rates
 date: 2026-01-07
+modified: 2026-01-08
 ---
 
 
 Sometimes you want to modify the ✨*shiny*✨ rate of the species you are working with.
 
-Use cases may vary. The typical scenario is when you are trying to give a player a species via methods other than natural spawning.
+Use cases tend to differ. The typical scenario is when you are trying to give a player a species via methods other than natural spawning.
 
 The code in this note is **Kotlin**. Your experience with **Java** may vary. Don't be afraid to ask questions in the Cobblemon Discord's `#programming` channel.
 
@@ -30,13 +31,13 @@ It accepts only two parameters:
 
 Now that we have created an event instance, we are ready to do some work—the instance exposes a couple of handy functions.
 
-The first allows us to apply a flat modifier to the event chance:
+The first exposed function allows us to apply a flat modifier to the event chance:
 
 ```kotlin
 event.addModifier(modifier: Float)
 ```
 
-The second allows us to apply a callable function to modify the chance.
+The second exposed function allows us to apply a callable function to modify the chance.
 We expect three arguments to be passed to it:
 * `Float` - Shiny rate
 * `ServerPlayer` - Nullable player 
@@ -79,6 +80,7 @@ event.addModificationFunction { chance, player, pokemon ->
 ```
 
 > [!hint] Kotlin specific
+> The absence of parentheses in function call is Kotlin syntactic sugar - in this case we only pass callable function as sole argument
 > The `return@addModificationFunction` is *specific to Kotlin* because we can explicitly tell Kotlin which function we want to return from.
 
 

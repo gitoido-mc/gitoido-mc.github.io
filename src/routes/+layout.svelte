@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { format } from 'date-fns';
-	import { Pen } from '@lucide/svelte';
-	import '@picocss/pico/css/pico.jade.css';
+	import { Pen, Github } from '@lucide/svelte';
+	import '$lib/pico.scss';
+	import '@wooorm/starry-night/style/high-contrast';
 	import 'flexboxgrid/dist/flexboxgrid.css';
 	import Seo from 'sk-seo';
 
@@ -10,6 +11,7 @@
 
 	const mainPage = resolve('/');
 	const notes = resolve('/notes');
+	const tags = resolve('/tags');
 	const year = format(new Date(), 'yyyy');
 </script>
 
@@ -67,6 +69,11 @@
 						<Pen />&nbsp;Notes
 					</a>
 				</li>
+				<li>
+					<a href="https://github.com/gitoido-mc" class="primary" target="_blank">
+						<Github />
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</section>
@@ -91,8 +98,10 @@
 					<h3>About author</h3>
 					<hr>
 					<p>Call me a retired(?) software developer, but really, I'm Gito - a lifelong tinkerer with code.</p>
-					<p>I've worked across the full stack with an assortment of languages, but Java and Kotlin have my current attention.</p>
-					<p>When I need a break from the screen, I'm usually jamming on my guitar, deep in a computer game, or streaming things on my Twitch channel.</p>
+					<p>I've worked across the full stack with an assortment of languages, but Java and Kotlin have my current
+						attention.</p>
+					<p>When I need a break from the screen, I'm usually jamming on my guitar, deep in a computer game, or
+						streaming things on my Twitch channel.</p>
 				</article>
 			</div>
 		</div>

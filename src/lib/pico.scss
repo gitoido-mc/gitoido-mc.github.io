@@ -1,0 +1,47 @@
+@use "@picocss/pico/scss/pico" as pico with (
+  $theme-color: "jade",
+  $modules: (
+    "components/modal": false
+  )
+);
+
+:root {
+  --pico-code-color: inherit;
+
+}
+
+pre, code:not([class]) {
+  box-shadow: var(--pico-box-shadow);
+  border: 1px solid var(--pico-primary-border);
+}
+
+p > code:not([class]), p > pre:not([class]) {
+  --pico-code-color: var(--pico-primary);
+}
+
+.callout {
+  display: block;
+  margin: var(--pico-typography-spacing-vertical) 0;
+  padding: var(--pico-spacing);
+  border-right: none;
+  border-left: 0.25rem solid var(--pico-blockquote-border-color);
+  border-inline-start: 0.25rem solid var(--pico-blockquote-border-color);
+  border-inline-end: none;
+
+  &-title {
+    font-size: 1.25rem;
+    display: inline-flex;
+    margin-bottom: var(--pico-block-spacing-vertical);
+    &-icon {
+      display: flex;
+      align-items: center;
+      margin-right: var(--pico-grid-column-gap);
+    }
+  }
+  &[data-callout='hint'] {
+    border-color: var(--pico-primary);
+    & > .callout-title {
+      color: var(--pico-primary);
+    }
+  }
+}

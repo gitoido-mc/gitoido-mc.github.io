@@ -1,23 +1,25 @@
 <script lang="ts">
-    import {resolve} from '$app/paths';
 
-    interface Props {
-        title: string,
-        slug: string,
-        excerpt: string,
-        tags: string[],
-        date: string,
-    }
+	import TagListComponent from '$lib/shared/TagListComponent.svelte';
+	import DateComponent from '$lib/shared/DateComponent.svelte';
+	import { format } from 'date-fns';
 
-    const props: Props = $props();
+	interface Props {
+		html: string,
+		tags: string[],
+		date: Date
+	}
 
-    const link = resolve('/notes/[slug]', {slug: props.slug});
+	const props: Props = $props();
+	const dateString = format(props.date, 'dd.MM.yyyy');
 </script>
 
 <article>
-    <header><a href={link}>{props.title}</a></header>
-    <p>{props.excerpt}</p>
-    <hr>
-    {props.tags.join(' ')}
-    <footer>{props.date}</footer>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html props.html}
+	<hr>
+	<div class="row">
+		<DateComponent date={dateString} />
+		<TagListComponent tags={props.tags} />
+	</div>
 </article>

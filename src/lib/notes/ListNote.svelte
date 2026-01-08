@@ -11,7 +11,6 @@
 		excerpt: string,
 		tags: string[],
 		date: Date,
-		noMargin?: boolean,
 		class?: ClassValue
 	}
 
@@ -21,6 +20,7 @@
 	const dateString = format(props.date, 'dd.MM.yyyy');
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style>
     header a {
         text-decoration: none;

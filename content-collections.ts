@@ -1,5 +1,10 @@
 import { defineCollection, defineConfig } from '@content-collections/core';
 import { compileMarkdown } from '@content-collections/markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeCallouts from 'rehype-callouts';
+import rehypeStarryNight from 'rehype-starry-night';
+import rehypeStringify from 'rehype-stringify';
+
 import { z } from 'zod';
 
 // for more information on configuration, visit:
@@ -18,7 +23,20 @@ const notes = defineCollection({
 		content: z.string()
 	}),
 	transform: async (document, context) => {
-		const html = await compileMarkdown(context, document);
+		const html = await compileMarkdown(
+			context,
+			document,
+			{
+				remarkPlugins: [
+					remarkGfm,
+				],
+				rehypePlugins: [
+					rehypeCallouts,
+					rehypeStarryNight,
+					rehypeStringify
+				]
+			}
+		);
 		return {
 			...document,
 			html

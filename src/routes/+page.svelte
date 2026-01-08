@@ -28,7 +28,6 @@
 </style>
 <section>
 	<h2 class="latest-notes__heading">Latest notes</h2>
-	<hr>
 	<div class="latest-notes">
 		{#each data.notes as note (note.slug)}
 			<ListNote class="no-margin" {...note} />

@@ -53,7 +53,7 @@ These handy helpers are our bread and butter.
 For example, if I want to apply a flat bonus, I would do it this way:
 
 ```kotlin
-var shinyRate = Cobblemon.config.shinyRate
+val shinyRate = Cobblemon.config.shinyRate
 val event = ShinyChanceCalculationEvent(shinyRate, pokemon)
 event.addModifier(100f) // add flat 100 increase
 ```
@@ -89,6 +89,23 @@ fun calculateShiny(player: ServerPlayer): Pokemon {
   val pokemon = PokemonProperties.parse('zubat').create()
   val shinyRate = Cobblemon.config.shinyRate
   val event = ShinyChanceCalculationEvent(shinyRate, pokemon)
+  
+  // Flat modifier
+  event.addModifier(100f) // add flat 100 increase
+  
+  // Callable modifier
+  event.addModificationFunction { chance, player, pokemon -> 
+    // For example, in this case I want to
+    // modify the rate if the pokemon is holding a diamond.
+
+    // Early bail if criteria not met
+    if (pokemon.heldItem().item != Items.DIAMOND) {
+	  return@addModificationFunction chance
+    }
+
+    // Return calculated chance otherwise
+    return@addModificationFunction (chance + 100f)
+  }
   
   CobblemonEvents.SHINY_CHANCE_CALCULATION.post(event) { evt ->
     pokemon.shiny = evt.isShiny(player)
